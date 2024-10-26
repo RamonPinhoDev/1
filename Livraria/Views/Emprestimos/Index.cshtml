@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EmprestimoViewModel>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-auto">
+
+        <h1>Livraria Uninassau</h1>
+        <img src="~/imagens/logo_uni2.png" alt="Logo" />
+
+        <div class="d-flex">
+            <a class="btn btn-success mx-2" asp-controller="Emprestimos" asp-action="Cadastrar">Novo</a>
+            <a class="btn btn-success mx-2" asp-controller="Emprestimos" asp-action="CadastrarLeitor">Novo Leitor</a>
+            <a class="btn btn-info mx-2" asp-controller="Emprestimos" asp-action="Csv">Baixar CSV</a>
+        </div>
+
+
+       @*  <a class="btn btn-success mx-2" asp-controller="Emprestimos" asp-action="Cadastrar"> Novo</a>
+        <a class="btn btn-success mx-2" asp-controller="Emprestimos" asp-action="CadastrarLeitor"> Novo Leitor</a>
+       <a class="btn btn-info mx-2" asp-controller="Emprestimos" asp-action="Csv">Baixar CSV</a> *@
+     </div>
+    </div>
+    <table class="table table-cus table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Titulo do livro</th>
+                <th scope="col">Data da retirada</th>
+                <th scope="col">Data da entrega</th>
+                <th scope="col">Status</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Sexo</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                @foreach (var emprestimos in Model)
+                {
+                    <tr>
+                        <td>@emprestimos.LivroEmprestado</td>
+                        <td>@emprestimos.dataRetirada</td>
+                        <td>@emprestimos.dataEntrega</td>
+                         <td>@emprestimos.Status</td>
+                        <td>@emprestimos.Nome</td>
+                        <td>@emprestimos.Idade</td>
+                        <td>@emprestimos.Sexo</td> 
+                        
+                        <td>
+                        <a asp-controller="Emprestimos" asp-action="Editar" asp-route-id="@emprestimos.EmprestimoId" button type="button" class="btn btn-warning" mx-2">Editar</a>
+                        <a asp-controller="Emprestimos" asp-action="Excluir" asp-route-id="@emprestimos.EmprestimoId" button type="button" class="btn btn-danger" mx-2">Excluir</a>
+
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+
+
+        </tbody>
+    </table>
+</div>

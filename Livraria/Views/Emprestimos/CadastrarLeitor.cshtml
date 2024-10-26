@@ -1,0 +1,37 @@
+﻿@model Livraria.ViewModel.EmprestimoViewModel
+
+@{
+    ViewData["title"] = "Cadastrar leitor";
+}
+
+<div class="container bg-custom p-3 rounded-5" style="max-width: 400px; margin: auto;">
+    <h4 class="text-light">Cadastrar leitor</h4>
+    <img src="~/imagens/logo_uni_semfundo2.png" />
+</div>
+
+<div class="mb-5 text-danger" style="max-width: 400px; margin: auto;">
+    <form method="post" asp-controller="Emprestimos" asp-action="CadastrarLeitor">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" asp-for="Nome" id="Nome" placeholder="Nome do recebedor?" style="width: 100%;">
+            <span asp-validation-for="Nome"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Idade" class="form-label">Idade:</label>
+            <input type="number" class="form-control" asp-for="Idade" id="Idade" placeholder="Idade do recebedor?" style="width: 100%;">
+            <span asp-validation-for="Idade"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="Sexo" class="form-label">Sexo:</label>
+            <input type="text" class="form-control" asp-for="Sexo" id="Sexo" placeholder="Sexo do recebedor?" style="width: 100%;">
+            <span asp-validation-for="Sexo"></span>
+        </div>
+
+        <div class="d-flex gap-5 mt-3">
+            <button type="submit" class="btn btn-success w-50">Cadastrar</button>
+            <a class="btn btn-primary w-50" asp-controller="Emprestimos" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>

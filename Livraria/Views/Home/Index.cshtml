@@ -1,0 +1,186 @@
+﻿@using Microsoft.EntityFrameworkCore.Storage
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+
+
+
+    var emprestado = ViewBag.Emprestado;
+
+    var disoinivel = ViewBag.Disponivel;
+    var naoDevolvido = ViewBag.NaoDevolvido;
+
+    var generoM = ViewBag.GeneroM;
+    var generoF = ViewBag.GeneroF;
+
+    var mesesJan = ViewBag.MesesJan;
+    var mesesFev = ViewBag.MesesFev;
+    var mesesMar = ViewBag.MesesMar;
+    var mesesAbr = ViewBag.MesesAbr;
+    var mesesMai = ViewBag.MesesMai;
+    var mesesJun = ViewBag.MesesJun;
+    var mesesJul = ViewBag.MesesJul;
+    var mesesAgo = ViewBag.MesesAgo;
+    var mesesSet = ViewBag.MesesSet;
+    var mesesOut = ViewBag.MesesOut;
+    var mesesNov = ViewBag.MesesNov;
+    var mesesDez = ViewBag.MesesDez;
+
+    var empretismoSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(emprestado));
+    var devolucaoSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(disoinivel));
+    var naoDevolecaoSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(naoDevolvido));
+    var generoMSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(generoM));
+    var generoFSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(generoF));
+    var mesesJanSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesJan));
+    var mesesFevSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesFev));
+    var mesesMarSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesMar));
+    var mesesAbrSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesAbr));
+    var mesesMaiSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesMai));
+    var mesesJunSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesJun));
+    var mesesJulSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesJul));
+    var mesesAgoSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesAgo));
+    var mesesSetSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesSet));
+    var mesesOutSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesOut));
+    var mesesNovSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesNov));
+    var mesesDezSerializador = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(mesesDez));
+
+
+}
+
+
+<div class="text-center">
+    @* <h1 class="display-4">Bem-V</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    <img src="~/imagens/logo_uni2.png" alt="Logo" />
+
+    <div class="card text-white bg-custom mb-3" style="max-width: 18rem;">
+        <div class="card-header">Repositório de Livros</div>
+        <div class="card-body">
+            <h5 class="card-title">Totais de livros</h5>
+            <h1>@ViewBag.Total</h1>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <div class="chart-container">
+        <canvas id="salesChart" style="max-width: 250px; max-height: 270px;"></canvas>
+        <canvas id="myLineChart" style="max-width:500px; max-height: 270px;"></canvas>
+        <canvas id="myPieChart" style="max-width: 250px; max-height: 270px;"></canvas>
+    </div>
+
+
+
+
+
+    <script>
+        var emp = @empretismoSerializador;
+        var disp = @devolucaoSerializador;
+        var naovol = @naoDevolecaoSerializador;
+        var sexM = @generoMSerializador;
+        var sexF = @generoFSerializador;
+        var mesJan = @mesesJanSerializador;
+        var mesFev = @mesesFevSerializador;
+        var mesMar = @mesesMarSerializador;
+        var mesAbr = @mesesAbrSerializador;
+        var mesMai = @mesesMaiSerializador;
+        var mesJun = @mesesJunSerializador;
+        var mesJul = @mesesJulSerializador;
+        var mesAgo = @mesesAgoSerializador;
+        var mesSet = @mesesSetSerializador;
+        var mesOut = @mesesOutSerializador;
+        var mesNov = @mesesNovSerializador;
+        var mesDez = @mesesDezSerializador;
+        var ctx = document.getElementById('salesChart').getContext('2d');
+        var salesChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Emprestado', 'Disponivel', 'Não devolvido'],
+
+                datasets: [{
+
+                    data: [emp, disp, naovol],
+                    backgroundColor: ['rgba(255, 255, 0, 0.9)', 'rgba(0, 128, 0, 0.9)', 'rgba(255, 0, 0, 0.9)'],
+                    borderColor: ['rgba(255, 255, 0, 1)', 'rgba(0, 128, 0, 1)', 'rgba(255, 0, 0, 1)'],
+
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: { display: false },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        })
+        // line
+      
+
+        const labels = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [mesJan, mesFev, mesMar, mesAbr, mesMai, mesJun, mesJul, mesAgo, mesSet, mesOut, mesNov, mesDez],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        const ctxLine = document.getElementById('myLineChart').getContext('2d');
+        const myLineChart = new Chart(ctxLine, config);
+
+
+        const ctxPie = document.getElementById('myPieChart').getContext('2d');
+        const myPieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: [sexM, sexF],
+                datasets: [{
+                    label: 'Dataset 1',
+                    data: [sexM, sexF],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Gráfico de Pizza Exemplo'
+                    }
+                }
+            }
+        });
+    </script>
+

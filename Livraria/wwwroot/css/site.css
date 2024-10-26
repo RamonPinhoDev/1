@@ -1,0 +1,33 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.bg-custom {
+    background-color: #015DB2 !important;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha os gráficos na parte superior */
+}
+.login-form {
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.8; 
+}

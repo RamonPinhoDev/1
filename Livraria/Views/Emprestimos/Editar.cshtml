@@ -1,0 +1,63 @@
+﻿@model Livraria.Models.EmprestimosMdel
+@{
+    ViewData["title"] = "Editar emprestimos";
+}
+<div class="container bg-custom p-3 rounded-5" style="max-width: 400px; margin: auto;">
+    <h4 class="text-light">Edição de emprestimos</h4>
+    <img src="~/imagens/logo_uni_semfundo2.png" />
+</div>
+
+<div class="mb-5 text-danger" style="max-width: 400px; margin: auto;">
+
+    <div>
+        <form method="post" asp-controller="Emprestimos" asp-action="Editar">
+
+            <div class="mb-3">
+                <label for="Recebedor" class="form-label">Recebedor:</label>
+                <input type="text" class="form-control" asp-for="dataRetirada" id="dataRetirada" placeholder="Quem está recebendo o livro?">
+                <span asp-validation-for="dataRetirada"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="Fornecedor" class="form-label">dataEntrega</label>
+                <input type="text" class="form-control" asp-for="dataEntrega" id="dataEntrega" placeholder="Quem está emprestando o livro?">
+                <span asp-validation-for="dataEntrega"></span>
+            </div>
+
+        
+
+            <div class="mb-3">
+                <label for="StatusId" class="form-label">Selecionar status:</label>
+                <select class="form-control" asp-for="StatusId" asp-items="ViewBag.Status">
+                    <option value="">Status atual: <span>@Model.Status</span></option>
+
+                </select>
+                <span asp-validation-for="StatusId"></span>
+            </div>
+
+             <div class="mb-3">
+                <label for="StatusId" class="form-label">Selecione leitor:</label>
+                <select class="form-control" asp-for="LeitorId" asp-items="ViewBag.Leitores">
+                    <option value=""> @ViewBag.LeitorAtual</option>
+                </select>
+                <span asp-validation-for="LeitorId"></span>
+
+
+            </div> 
+
+            
+
+                    <div class="mb-3">
+                        <label for="LivroEmprestado" class="form-label">Livro:</label>
+                        <input type="text" class="form-control" asp-for="LivroEmprestado" id="LivroEmprestado" placeholder="Qual é o livro que está sendo emprestado?">
+                        <span asp-validation-for="LivroEmprestado"></span>
+                    </div>
+
+                    <div class="d-flex gap-5 mt-5">
+                        <button type="submit" class="btn btn-success w-50" >Editar</button>
+                        <a class="btn btn-primary w-50" asp-controller="Emprestimos" asp-action="Index">Voltar</a>
+                    </div>
+
+        </form>
+
+    </div>

@@ -1,0 +1,57 @@
+﻿@model Livraria.ViewModel.EmprestimoViewModel
+
+@{
+    ViewData["title"] = "Excluir Empréstimos";
+}
+<div class="container bg-custom p-3 rounded-5" style="max-width: 400px; margin: auto;">
+    <h4 class="text-light">Excluir Empréstimos</h4>
+    <img src="~/imagens/logo_uni_semfundo2.png" />
+</div>
+
+<div class="mb-5 text-danger" style="max-width: 400px; margin: auto;">
+    <div>
+        <form method="post" asp-controller="Emprestimos" asp-action="Excluir">
+            <input type="hidden" asp-for="EmprestimoId" /> 
+            
+            <div class="mb-3">
+                <label for="Recebedor" class="form-label">Recebedor:</label>
+                <input type="text" class="form-control" asp-for="Nome" id="Nome" readonly />
+                <span asp-validation-for="Nome"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="dataRetirada" class="form-label">Data de Retirada:</label>
+                <input type="text" class="form-control" asp-for="dataRetirada" id="dataRetirada" readonly />
+                <span asp-validation-for="dataRetirada"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="dataEntrega" class="form-label">Data de Entrega:</label>
+                <input type="text" class="form-control" asp-for="dataEntrega" id="dataEntrega" readonly />
+                <span asp-validation-for="dataEntrega"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="Status" class="form-label">Status:</label>
+                <input type="text" class="form-control" asp-for="Status" id="Status" readonly />
+                <span asp-validation-for="Status"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="LivroEmprestado" class="form-label">Livro:</label>
+                <input type="text" class="form-control" asp-for="LivroEmprestado" id="LivroEmprestado" readonly />
+                <span asp-validation-for="LivroEmprestado"></span>
+            </div>
+            <div class="mb-3">
+                <label for="LivroEmprestado" class="form-label">Sexo:</label>
+                <input type="text" class="form-control" asp-for="Sexo" id="Sexo" readonly />
+                <span asp-validation-for="Sexo"></span>
+            </div>
+
+            <div class="d-flex gap-5 mt-5">
+                <button type="submit" class="btn btn-danger w-50">Excluir</button>
+                <a class="btn btn-primary w-50" asp-controller="Emprestimos" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>

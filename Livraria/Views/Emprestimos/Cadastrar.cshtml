@@ -1,0 +1,61 @@
+﻿@model Livraria.Models.EmprestimosMdel
+
+@* @{
+    ViewData["title"] = "Cadastrar empréstimos";
+}
+ *@
+<div class="container bg-custom p-3 rounded-5" style="max-width: 400px; margin: auto;">
+    <h4 class="text-light">Cadastrar emprestimo</h4>
+    <img src="~/imagens/logo_uni_semfundo2.png" />
+</div>
+
+<div class="mb-5 text-danger" style="max-width: 400px; margin: auto;">
+    <form method="post" asp-controller="Emprestimos" asp-action="Cadastrar">
+
+        <div class="mb-3">
+            <label for="dataRetirada" class="form-label">Data de Retirada:</label>
+            <input type="date" class="form-control" asp-for="dataRetirada" id="dataRetirada" placeholder="Quando o livro foi retirado?">
+            <span asp-validation-for="dataRetirada"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="dataEntrega" class="form-label">Data de Entrega:</label>
+            <input type="date" class="form-control" asp-for="dataEntrega" id="dataEntrega" placeholder="Quando o livro será devolvido?">
+            <span asp-validation-for="dataEntrega"></span>
+        </div>
+
+
+
+        <div class="mb-3">
+            <label for="LivroEmprestado" class="form-label">Livro Emprestado:</label>
+            <input type="text" class="form-control" asp-for="LivroEmprestado" id="LivroEmprestado" placeholder="Qual é o livro que está sendo emprestado?">
+            <span asp-validation-for="LivroEmprestado"></span>
+        </div>
+        <div class="mb-3">
+            <label for="StatusId" class="form-label">Selecionar status:</label>
+            <select class="form-control" asp-for="StatusId" asp-items="ViewBag.Status">
+                <option value="">Selecione o status</option>
+            </select>
+            <span asp-validation-for="StatusId"></span>
+        </div>
+
+
+         <div class="mb-3">
+        <label for="StatusId" class="form-label">Selecione leitor:</label>
+        <select class="form-control" asp-for="LeitorId" asp-items="ViewBag.Leitores">
+        <option value="">Selecione o leitor</option>
+        </select>
+        <span asp-validation-for="LeitorId"></span> 
+
+            
+        </div>
+
+       
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-50">Cadastrar</button>
+            <a class="btn btn-primary w-50" asp-controller="Emprestimos" asp-action="Index">Voltar</a>
+        </div>
+ 
+        
+    </form>
+</div>
