@@ -4,6 +4,8 @@
 Este sistema web foi desenvolvido como parte do projeto acadêmico do 6º semestre do curso de **Sistemas de Informação**. Ele tem como objetivo principal gerenciar o estoque de livros de uma biblioteca, permitindo o controle eficiente de entradas, saídas e informações dos exemplares.
 ![Captura de tela 2024-11-20 180125](https://github.com/user-attachments/assets/a0598a87-5c57-4b21-b685-30f25d69f363)
 
+![image](https://github.com/user-attachments/assets/c8d30585-4827-4957-878e-e6b2838969be)
+
 
 ## Funcionalidades Principais  
 - **Login:** Buscar por livros no acervo utilizando filtros como título, autor ou categoria.
