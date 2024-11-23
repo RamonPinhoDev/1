@@ -44,7 +44,10 @@ Este sistema web foi desenvolvido como parte do projeto acadêmico do 6º semest
 - .NET SDK 8.0 (ou superior)  
 
 
-https://github.com/user-attachments/assets/d2f59187-fd80-4718-84a3-00087cc1d343
 
+
+
+
+https://github.com/user-attachments/assets/9d523512-80ad-4244-8d95-e77d4a826dfb
 
 
