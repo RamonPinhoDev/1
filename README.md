@@ -43,3 +43,8 @@ Este sistema web foi desenvolvido como parte do projeto acadêmico do 6º semest
 - SQL Server (ou equivalente)  
 - .NET SDK 8.0 (ou superior)  
 
+
+https://github.com/user-attachments/assets/d2f59187-fd80-4718-84a3-00087cc1d343
+
+
+
